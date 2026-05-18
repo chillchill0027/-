@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>朱元璋青少年经历对其中晚年决策的心理学解读</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --ink: #1a1410;
+    --paper: #f5f0e8;
+    --gold: #c9a84c;
+    --gold-light: #e8d48b;
+    --vermilion: #c23a2b;
+    --jade: #2d6a4f;
+    --jade-light: #40916c;
+    --slate: #3d3d3d;
+    --mist: #d4cfc4;
+    --cream: #faf6ee;
+    --dark-bg: #0d0b09;
+    --section-bg: #141210;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--dark-bg);
+    color: var(--paper);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ===== 滚动动画基础 ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* 延迟 */
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+  .delay-5 { transition-delay: 0.5s; }
+  .delay-6 { transition-delay: 0.6s; }
+
+  /* ===== Hero 封面 ===== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 30% 50%, #1a1510 0%, var(--dark-bg) 70%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('images/slide1_图片_3.jpg') center/cover no-repeat;
+    opacity: 0.25;
+    filter: blur(2px) saturate(0.6);
+    transform: scale(1.1);
+    animation: heroZoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1.1); }
+    to { transform: scale(1.0); }
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(13,11,9,0.3) 0%,
+      rgba(13,11,9,0.1) 40%,
+      rgba(13,11,9,0.6) 80%,
+      rgba(13,11,9,1) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 2rem;
+  }
+
+  .hero-seal {
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--vermilion);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2.5rem;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.8rem;
+    color: var(--vermilion);
+    font-weight: 900;
+    transform: rotate(-3deg);
+    animation: sealFloat 6s ease-in-out infinite;
+  }
+
+  @keyframes sealFloat {
+    0%, 100% { transform: rotate(-3deg) translateY(0); }
+    50% { transform: rotate(-3deg) translateY(-8px); }
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--paper) 0%, var(--gold-light) 50%, var(--paper) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--mist);
+    letter-spacing: 0.15em;
+    font-weight: 300;
+  }
+
+  .hero-line {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 2rem auto;
+  }
+
+  .hero-members {
+    font-size: 0.85rem;
+    color: rgba(212,207,196,0.6);
+    letter-spacing: 0.1em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(212,207,196,0.4);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+
+  .scroll-hint svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--gold);
+    stroke-width: 2;
+    fill: none;
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+  }
+
+  /* ===== 通用 Section ===== */
+  section {
+    position: relative;
+    padding: 6rem 2rem;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--vermilion);
+    margin-top: 1rem;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.3;
+    margin: 0;
+  }
+
+  /* ===== 研究题目 Section ===== */
+  .topic-section {
+    background: var(--section-bg);
+    padding: 8rem 2rem;
+  }
+
+  .topic-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  .topic-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 12px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s, transform 0.4s;
+  }
+
+  .topic-card:hover {
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-4px);
+  }
+
+  .topic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--vermilion), var(--gold));
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .topic-card:hover::before {
+    opacity: 1;
+  }
+
+  .topic-card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .topic-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--gold-light);
+  }
+
+  .topic-card p {
+    font-size: 0.95rem;
+    color: var(--mist);
+    line-height: 1.9;
+  }
+
+  /* ===== 人物简介 ===== */
+  .bio-section {
+    background: linear-gradient(180deg, var(--dark-bg) 0%, #0f0e0c 100%);
+    padding: 8rem 2rem;
+  }
+
+  .bio-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .bio-portrait {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+  }
+
+  .bio-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.2) contrast(1.1);
+    transition: transform 0.6s, filter 0.6s;
+  }
+
+  .bio-portrait:hover img {
+    transform: scale(1.05);
+    filter: sepia(0) contrast(1.1);
+  }
+
+  .bio-portrait::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+
+  .bio-text {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--mist);
+  }
+
+  .bio-text .highlight {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  .bio-timeline {
+    margin-top: 2rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid rgba(201,168,76,0.3);
+  }
+
+  .bio-timeline-item {
+    padding: 0.8rem 0 0.8rem 1.5rem;
+    position: relative;
+  }
+
+  .bio-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 1.1rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--vermilion);
+    border: 2px solid var(--dark-bg);
+  }
+
+  .bio-timeline-year {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 0.9rem;
+  }
+
+  .bio-timeline-desc {
+    font-size: 0.9rem;
+    color: var(--mist);
+  }
+
+  /* ===== 心理学原理 ===== */
+  .theory-section {
+    background: var(--section-bg);
+    padding: 8rem 2rem;
+  }
+
+  .theory-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .theory-card {
+    background: linear-gradient(135deg, rgba(201,168,76,0.05), rgba(194,58,43,0.03));
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 16px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+
+  .theory-card:hover {
+    border-color: rgba(201,168,76,0.35);
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(194,58,43,0.05));
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  .theory-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(201,168,76,0.12);
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    line-height: 1;
+  }
+
+  .theory-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+
+  .theory-card p {
+    font-size: 0.92rem;
+    color: var(--mist);
+    line-height: 1.9;
+  }
+
+  /* ===== 史料 ===== */
+  .source-section {
+    background: linear-gradient(180deg, #0f0e0c, var(--dark-bg));
+    padding: 8rem 2rem;
+  }
+
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .source-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    transition: all 0.4s;
+  }
+
+  .source-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    background: rgba(201,168,76,0.03);
+    transform: translateX(8px);
+  }
+
+  .source-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--vermilion);
+    line-height: 1;
+    min-width: 2.5rem;
+  }
+
+  .source-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 0.3rem;
+  }
+
+  .source-card p {
+    font-size: 0.88rem;
+    color: rgba(212,207,196,0.6);
+    line-height: 1.7;
+  }
+
+  /* ===== 案例分析总览 ===== */
+  .cases-section {
+    background: var(--dark-bg);
+    padding: 8rem 2rem;
+    text-align: center;
+  }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .case-pill {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    transition: all 0.5s;
+    cursor: default;
+  }
+
+  .case-pill:hover {
+    border-color: var(--vermilion);
+    background: rgba(194,58,43,0.08);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(194,58,43,0.15);
+  }
+
+  .case-pill-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--vermilion);
+    margin-bottom: 0.5rem;
+  }
+
+  .case-pill h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--paper);
+  }
+
+  /* ===== 案例详情 ===== */
+  .detail-section {
+    padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .detail-section:nth-child(odd) {
+    background: var(--section-bg);
+  }
+
+  .detail-section:nth-child(even) {
+    background: var(--dark-bg);
+  }
+
+  .detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .detail-layout.reverse {
+    grid-template-columns: 1.5fr 1fr;
+  }
+
+  .detail-layout.reverse .detail-visual {
+    order: 2;
+  }
+
+  .detail-layout.reverse .detail-text {
+    order: 1;
+  }
+
+  .detail-visual {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .detail-visual img {
+    width: 100%;
+    border-radius: 12px;
+    transition: transform 0.6s;
+  }
+
+  .detail-visual:hover img {
+    transform: scale(1.03);
+  }
+
+  .detail-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+
+  .detail-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    border: 1px solid rgba(194,58,43,0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+
+  .detail-text h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .detail-text h2 .accent {
+    color: var(--vermilion);
+  }
+
+  .detail-block {
+    margin-bottom: 2rem;
+  }
+
+  .detail-block-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+  }
+
+  .detail-block p {
+    font-size: 0.95rem;
+    color: var(--mist);
+    line-height: 2;
+  }
+
+  .quote-block {
+    background: rgba(201,168,76,0.05);
+    border-left: 3px solid var(--gold);
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.5rem 0;
+    font-style: italic;
+  }
+
+  .quote-block p {
+    font-size: 0.9rem;
+    color: rgba(212,207,196,0.8);
+    line-height: 1.9;
+  }
+
+  .quote-source {
+    font-size: 0.78rem;
+    color: rgba(201,168,76,0.6);
+    margin-top: 0.5rem;
+    font-style: normal;
+  }
+
+  /* ===== 埃里克森理论 ===== */
+  .erikson-section {
+    background: linear-gradient(180deg, var(--dark-bg), #0f0e0c);
+    padding: 8rem 2rem;
+  }
+
+  .erikson-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .erikson-card {
+    background: rgba(45,106,79,0.06);
+    border: 1px solid rgba(45,106,79,0.15);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .erikson-card:hover {
+    border-color: rgba(45,106,79,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+  }
+
+  .erikson-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--jade), var(--jade-light));
+  }
+
+  .erikson-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #95d5b2;
+    margin-bottom: 1rem;
+  }
+
+  .erikson-card p {
+    font-size: 0.92rem;
+    color: var(--mist);
+    line-height: 1.9;
+  }
+
+  /* ===== 结尾 ===== */
+  .end-section {
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 50%, #1a1510, var(--dark-bg));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .end-section::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border: 1px solid rgba(201,168,76,0.08);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: endPulse 8s ease-in-out infinite;
+  }
+
+  .end-section::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border: 1px solid rgba(201,168,76,0.04);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: endPulse 8s ease-in-out infinite 1s;
+  }
+
+  @keyframes endPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.5; }
+  }
+
+  .end-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .end-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    background: linear-gradient(135deg, var(--paper), var(--gold-light), var(--paper));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+  }
+
+  .end-sub {
+    font-size: 1rem;
+    color: rgba(212,207,196,0.4);
+    letter-spacing: 0.2em;
+  }
+
+  .end-quote {
+    margin-top: 3rem;
+    font-size: 0.95rem;
+    color: rgba(212,207,196,0.3);
+    font-style: italic;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+  }
+
+  /* ===== 进度条 ===== */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--vermilion), var(--gold));
+    z-index: 1000;
+    transition: width 0.1s linear;
+  }
+
+  /* ===== 导航点 ===== */
+  .nav-dots {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.2);
+    border: 1px solid rgba(201,168,76,0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .nav-dot.active {
+    background: var(--gold);
+    transform: scale(1.4);
+    box-shadow: 0 0 12px rgba(201,168,76,0.4);
+  }
+
+  .nav-dot:hover {
+    background: rgba(201,168,76,0.5);
+  }
+
+  /* ===== 响应式 ===== */
+  @media (max-width: 900px) {
+    .topic-grid,
+    .theory-grid,
+    .source-grid,
+    .erikson-grid {
+      grid-template-columns: 1fr;
+    }
+    .cases-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .bio-layout,
+    .detail-layout,
+    .detail-layout.reverse {
+      grid-template-columns: 1fr;
+    }
+    .detail-layout.reverse .detail-visual { order: 0; }
+    .detail-layout.reverse .detail-text { order: 0; }
+    .nav-dots { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .cases-grid {
+      grid-template-columns: 1fr;
+    }
+    section {
+      padding: 4rem 1.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- 进度条 -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- 导航点 -->
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- ===== 封面 ===== -->
+<section class="hero" data-section="hero">
+  <div class="hero-content">
+    <div class="hero-seal reveal delay-1">明</div>
+    <h1 class="reveal delay-2">朱元璋青少年经历<br>对其中晚年决策的心理学解读</h1>
+    <div class="hero-line reveal delay-3"></div>
+    <p class="hero-sub reveal delay-4">跨学科历史研究</p>
+    <p class="hero-members reveal delay-5">梁建炜 · 李松恩 · 任东鹏 · 陶鹏骏 · 周士钦 · 张誉超 · 赵一舟</p>
+  </div>
+  <div class="scroll-hint">
+    <span>向下滚动</span>
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 研究题目 ===== -->
+<section class="topic-section" data-section="topic">
+  <div class="section-inner">
+    <p class="section-label reveal">RESEARCH TOPIC</p>
+    <h2 class="section-title reveal delay-1">研究题目</h2>
+    <div class="topic-grid">
+      <div class="topic-card reveal delay-2">
+        <div class="topic-card-icon">🔍</div>
+        <h3>创伤与漂泊</h3>
+        <p>探析朱元璋青少年苦难创伤、底层漂泊经历塑造的猜忌、自卑与不安全感。</p>
+      </div>
+      <div class="topic-card reveal delay-3">
+        <div class="topic-card-icon">⚖️</div>
+        <h3>人格与决策</h3>
+        <p>对中晚年肃贪、废相、屠戮功臣等政治决策的关联，丰富帝王人格与治国行为的研究。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 人物简介 ===== -->
+<section class="bio-section" data-section="bio">
+  <div class="section-inner">
+    <p class="section-label reveal">HISTORICAL FIGURE</p>
+    <h2 class="section-title reveal delay-1">朱元璋（1328—1398）</h2>
+    <div class="bio-layout">
+      <div class="bio-portrait reveal-left delay-2">
+        <img src="images/slide3_图片_11.jpg" alt="朱元璋画像">
+      </div>
+      <div class="reveal-right delay-3">
+        <p class="bio-text">
+          濠州钟离（今安徽凤阳）人，明朝开国皇帝，年号洪武。出身<span class="highlight">赤贫</span>，少时放牛，<span class="highlight">17岁</span>逢灾疫失亲，入皇觉寺为僧，后流浪淮西乞讨三年。1352年投红巾军郭子兴部，渐掌兵权，1356年取南京为根据地。1368年称帝建明，北伐灭元，统一全国。
+        </p>
+        <div class="bio-timeline reveal delay-4">
+          <div class="bio-timeline-item">
+            <div class="bio-timeline-year">1328</div>
+            <div class="bio-timeline-desc">出生于濠州钟离太平乡</div>
+          </div>
+          <div class="bio-timeline-item">
+            <div class="bio-timeline-year">1344</div>
+            <div class="bio-timeline-desc">父母兄长因灾疫相继去世，入皇觉寺为僧</div>
+          </div>
+          <div class="bio-timeline-item">
+            <div class="bio-timeline-year">1345—1347</div>
+            <div class="bio-timeline-desc">流浪淮西，乞讨三年</div>
+          </div>
+          <div class="bio-timeline-item">
+            <div class="bio-timeline-year">1352</div>
+            <div class="bio-timeline-desc">投红巾军郭子兴部</div>
+          </div>
+          <div class="bio-timeline-item">
+            <div class="bio-timeline-year">1368</div>
+            <div class="bio-timeline-desc">称帝建明，年号洪武</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 心理学原理 ===== -->
+<section class="theory-section" data-section="theory">
+  <div class="section-inner">
+    <p class="section-label reveal">PSYCHOLOGICAL THEORIES</p>
+    <h2 class="section-title reveal delay-1">使用的心理学原理</h2>
+    <div class="theory-grid">
+      <div class="theory-card reveal delay-1">
+        <div class="theory-num">01</div>
+        <h3>阿德勒 · 个体心理学</h3>
+        <p>自卑感与补偿机制：深刻的自卑感催生对"控制"的异常渴望，作为心理补偿，将一切置于绝对掌控之下。</p>
+      </div>
+      <div class="theory-card reveal delay-2">
+        <div class="theory-num">02</div>
+        <h3>创伤心理学（C-PTSD）</h3>
+        <p>持续性创伤形成牢固的负性核心信念："他人不可信"、"世界充满威胁"，导致过度警觉与控制欲。</p>
+      </div>
+      <div class="theory-card reveal delay-3">
+        <div class="theory-num">03</div>
+        <h3>埃里克森 · 心理社会发展理论</h3>
+        <p>青少年期核心危机——同一性与角色混乱：剧烈的身份撕裂使他终其一生建构并捍卫强大的"帝王同一性"。</p>
+      </div>
+      <div class="theory-card reveal delay-4">
+        <div class="theory-num">04</div>
+        <h3>拉斯韦尔 · 权力与人格理论</h3>
+        <p>个体通过获取和行使公共权力，来补偿私密领域的自卑、焦虑或无力感。焦虑核心是"失控"与"被背叛"。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 历史史料 ===== -->
+<section class="source-section" data-section="source">
+  <div class="section-inner">
+    <p class="section-label reveal">HISTORICAL SOURCES</p>
+    <h2 class="section-title reveal delay-1">历史史料</h2>
+    <div class="source-grid">
+      <div class="source-card reveal delay-1">
+        <div class="source-num">壹</div>
+        <div>
+          <h3>《明太祖实录》</h3>
+          <p>明朝官方编年体史书，记录朱元璋生平与治国言行</p>
+        </div>
+      </div>
+      <div class="source-card reveal delay-2">
+        <div class="source-num">贰</div>
+        <div>
+          <h3>《明史》</h3>
+          <p>清代官修纪传体史书，系统记载明朝历史</p>
+        </div>
+      </div>
+      <div class="source-card reveal delay-3">
+        <div class="source-num">叁</div>
+        <div>
+          <h3>《国初事迹》</h3>
+          <p>记录明朝开国初期的重要事件与制度</p>
+        </div>
+      </div>
+      <div class="source-card reveal delay-4">
+        <div class="source-num">肆</div>
+        <div>
+          <h3>《皇明祖训》</h3>
+          <p>朱元璋亲自撰写的皇室训诫，折射其深层心理</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 案例分析总览 ===== -->
+<section class="cases-section" data-section="cases">
+  <div class="section-inner">
+    <p class="section-label reveal">CASE ANALYSIS</p>
+    <h2 class="section-title reveal delay-1" style="text-align:center">案例分析</h2>
+    <div class="cases-grid">
+      <div class="case-pill reveal delay-1">
+        <div class="case-pill-num">壹</div>
+        <h3>废除丞相制</h3>
+      </div>
+      <div class="case-pill reveal delay-2">
+        <div class="case-pill-num">贰</div>
+        <h3>设立锦衣卫</h3>
+      </div>
+      <div class="case-pill reveal delay-3">
+        <div class="case-pill-num">叁</div>
+        <h3>蓝玉案</h3>
+      </div>
+      <div class="case-pill reveal delay-4">
+        <div class="case-pill-num">肆</div>
+        <h3>重典重刑</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 案例1：废除丞相制 ===== -->
+<section class="detail-section" data-section="case1">
+  <div class="detail-layout">
+    <div class="detail-visual reveal-left">
+      <img src="images/slide8_图片_19.jpg" alt="废除丞相制">
+    </div>
+    <div class="detail-text reveal-right">
+      <span class="detail-tag">案例壹</span>
+      <h2>废除<span class="accent">丞相制</span></h2>
+      <div class="detail-block">
+        <div class="detail-block-label">史料记载</div>
+        <p>据《明太祖本纪》及朱元璋自撰《御制皇陵碑》："天灾流行，眷属罹殃。……身如蓬逐风而不止，心滚滚乎沸汤。"</p>
+      </div>
+      <div class="quote-block">
+        <p>"设丞相，自秦始。朕观自古以来，君天下者，无贤否治乱，莫不由于宰相之贤否。然宰相权重，指鹿为马，非自今始。"</p>
+        <div class="quote-source">——《明太祖实录·卷一二三》</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-label">心理学分析</div>
+        <p>这段经历摧毁了他对世界的基本安全感与信任感。根据阿德勒的个体心理学，这种深刻的自卑感，催生了对"控制"的异常渴望，作为心理补偿。他潜意识中认为，只有将一切置于自己的绝对掌控之下，才能避免重蹈无力、无助、任人摆布的覆辙。</p>
+      </div>
+      <div class="quote-block">
+        <p>"以后子孙做皇帝时，并不许立丞相。臣下敢有奏请设立者，文武群臣即时劾奏，将犯人凌迟，全家处死。"</p>
+        <div class="quote-source">——《皇明祖训·首章》</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 案例2：锦衣卫 ===== -->
+<section class="detail-section" data-section="case2">
+  <div class="detail-layout reverse">
+    <div class="detail-visual reveal-right">
+      <img src="images/slide10_图片_3.jpg" alt="锦衣卫">
+    </div>
+    <div class="detail-text reveal-left">
+      <span class="detail-tag">案例贰</span>
+      <h2><span class="accent">锦衣卫</span>与蓝玉案</h2>
+      <div class="detail-block">
+        <div class="detail-block-label">拉斯韦尔权力与人格理论</div>
+        <p>个体通过获取和行使公共权力，来补偿私密领域的自卑、焦虑或无力感。朱元璋的焦虑核心是"失控"与"被背叛"，因此他需要建立一种绝对控制、绝对忠诚的制度补偿。</p>
+      </div>
+      <div class="quote-block">
+        <p>"朕设察言司，将以察四方之奸弊也。今所言者，皆朕之肘腋。朕左右尚有欺隐者，况远方乎？"</p>
+        <div class="quote-source">——《大诰三编·官吏长押卖囚第十六》</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-label">制度设计</div>
+        <p>《明史·职官志五》载："（洪武）十五年罢仪鸾司，改置锦衣卫，掌直驾侍卫、巡查缉捕。"不仅仅是安保，更是主动出击的监控。锦衣卫的调查起点可以是捕风捉影，这正是朱元璋需要满足其"过度警觉"心理的制度设计。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 案例3：蓝玉案 ===== -->
+<section class="detail-section" data-section="case3">
+  <div class="detail-layout">
+    <div class="detail-visual reveal-left">
+      <img src="images/slide11_图片_2.jpg" alt="蓝玉案">
+    </div>
+    <div class="detail-text reveal-right">
+      <span class="detail-tag">案例叁</span>
+      <h2><span class="accent">蓝玉案</span></h2>
+      <div class="detail-block">
+        <div class="detail-block-label">创伤心理学（PTSD-负性认知）</div>
+        <p>持续性的创伤经历会形成牢固的负性核心信念，如"我是危险的"、"他人不可信"、"世界是充满威胁的"。太子朱标的去世激活了他内心最深层的创伤性认知——"权力一旦分散，必将导致背叛与毁灭"。</p>
+      </div>
+      <div class="quote-block">
+        <p>"玉不乐居宋、颍两公下，奏曰：'臣劳征伐，乃不得国公乎？'"封其为凉国公后，"玉犹不乐，居常怏怏，尝出不逊语。"</p>
+        <div class="quote-source">——《明太祖实录》卷二二五</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-label">确认偏误</div>
+        <p>朱元璋和锦衣卫系统性地搜寻符合其预设结论（蓝玉必反）的证据，忽略或否定相反信息。《逆臣录》记载的供词高度一致地指向"谋反"——这恰恰暴露了有罪推定的审讯逻辑。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 案例4：重典重刑 ===== -->
+<section class="detail-section" data-section="case4">
+  <div class="detail-layout reverse">
+    <div class="detail-visual reveal-right">
+      <img src="images/slide5_图片_34.jpg" alt="重典重刑">
+    </div>
+    <div class="detail-text reveal-left">
+      <span class="detail-tag">案例肆</span>
+      <h2><span class="accent">重典</span>重刑</h2>
+      <div class="detail-block">
+        <div class="detail-block-label">心理学原理</div>
+        <p>当个体无法在内心获得安全感时，可能通过在外部世界建立绝对、有序的恐怖秩序来代偿。朱元璋的重典，尤其是后期的大案株连，已超出打击具体犯罪的范畴。</p>
+      </div>
+      <div class="quote-block">
+        <p>"朕自起兵至今，四十余年，亲见天下奸顽之徒，虽多被诛戮，终不知悔。"</p>
+        <div class="quote-source">——《大诰初编·君臣同游第一》</div>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-label">从"惩贪"到"肃清"</div>
+        <p>早期《大诰》侧重惩治贪官污吏。但到后期，如蓝玉案、郭桓案，动辄株连数万人，其打击范围已扩大到整个功臣集团。《明史·刑法志二》载："郭桓既诛，天下中人以上之家，大抵皆破。"这种大规模、无差别的清洗，其心理功能是制造真空。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 埃里克森理论 ===== -->
+<section class="erikson-section" data-section="erikson">
+  <div class="section-inner">
+    <p class="section-label reveal">ERIKSON'S THEORY</p>
+    <h2 class="section-title reveal delay-1">埃里克森心理社会发展理论</h2>
+    <p class="reveal delay-2" style="color:var(--mist);font-size:1.05rem;line-height:2;max-width:800px;margin-bottom:2rem;">
+      埃里克森认为，青少年期的核心危机是<span style="color:var(--jade-light);font-weight:600;">"同一性与角色混乱"</span>，即个体需要整合过去的经验与社会角色，形成稳定、统一的自我认知。朱元璋的青少年时期，恰恰经历了常人难以想象的剧烈身份撕裂。
+    </p>
+    <div class="erikson-grid">
+      <div class="erikson-card reveal delay-1">
+        <h3>🎭 角色的彻底剥夺</h3>
+        <p>他的青少年始于一场"角色"的彻底剥夺。家庭的死亡与离散，让他从"农家子"瞬间沦为无依的流民。随后进入皇觉寺为僧，又被迫离开寺庙，成为云游乞丐的游方僧。</p>
+      </div>
+      <div class="erikson-card reveal delay-2">
+        <h3>⚔️ 用武力焊接同一性</h3>
+        <p>通过战场上的生死搏杀和权力场中的冷酷算计，他迅速凭借武力与权谋崛起，用军事胜利和扩张的权力，暂时压倒了内心的角色混乱。</p>
+      </div>
+      <div class="erikson-card reveal delay-3">
+        <h3>👻 幽灵般的创伤</h3>
+        <p>这种通过外部成就"焊接"起来的同一性根基脆弱。早年无家可归的飘零感、为奴为仆的羞耻感、朝不保夕的不安全感，如同幽灵般潜伏在他强悍的帝王人格之下。</p>
+      </div>
+      <div class="erikson-card reveal delay-4">
+        <h3>🏛️ 补偿与控制</h3>
+        <p>他后来所有的重典、监视与清洗，都可以看作对这段时期的补偿：他必须确保帝国秩序绝对稳固，任何人、任何制度都不能再让他体验那种失控与无助。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 结尾 ===== -->
+<section class="end-section" data-section="end">
+  <div class="end-content">
+    <div class="end-text reveal-scale">END</div>
+    <p class="end-sub reveal delay-2">朱元璋青少年经历对其中晚年决策的心理学解读</p>
+    <p class="end-quote reveal delay-3">老朱也是个苦命人诶</p>
+  </div>
+</section>
+
+<script>
+  // ===== Intersection Observer 滚动动画 =====
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -60px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+    observer.observe(el);
+  });
+
+  // ===== 进度条 =====
+  const progressBar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+    progressBar.style.width = progress + '%';
+  });
+
+  // ===== 导航点 =====
+  const sections = [
+    { id: 'hero', label: '封面' },
+    { id: 'topic', label: '研究题目' },
+    { id: 'bio', label: '人物简介' },
+    { id: 'theory', label: '心理学原理' },
+    { id: 'source', label: '历史史料' },
+    { id: 'cases', label: '案例分析' },
+    { id: 'case1', label: '废除丞相制' },
+    { id: 'case2', label: '锦衣卫' },
+    { id: 'case3', label: '蓝玉案' },
+    { id: 'case4', label: '重典重刑' },
+    { id: 'erikson', label: '埃里克森理论' },
+    { id: 'end', label: '结尾' }
+  ];
+
+  const navDots = document.getElementById('navDots');
+  sections.forEach((s, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.title = s.label;
+    dot.addEventListener('click', () => {
+      document.querySelector(`[data-section="${s.id}"]`).scrollIntoView({ behavior: 'smooth' });
+    });
+    navDots.appendChild(dot);
+  });
+
+  // 更新活跃导航点
+  const sectionEls = document.querySelectorAll('[data-section]');
+  const dots = document.querySelectorAll('.nav-dot');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(sectionEls).indexOf(entry.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sectionEls.forEach(el => sectionObserver.observe(el));
+</script>
+
+</body>
+</html>
